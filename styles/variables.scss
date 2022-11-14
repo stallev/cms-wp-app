@@ -1,0 +1,118 @@
+// Gutters
+$gutter-base: 16px;
+$gutter-xxs: $gutter-base * 0.125; // 2
+$gutter-xs: $gutter-base * 0.25; // 4
+$gutter-sm: $gutter-base * 0.5; // 8
+$gutter-ms: $gutter-base * 0.75; // 12
+$gutter-md: $gutter-base;
+$gutter-ml: $gutter-base * 1.5; // 24
+$gutter-lg: $gutter-base * 2; // 32
+$gutter-xl: $gutter-base * 2.5; // 40
+$gutter-xlg: $gutter-base * 4; // 64
+$gutter-xxlg: $gutter-base * 5; // 80
+
+// Colors
+
+$main-bright-color: #6f9a37;
+
+// Font Sizes
+$font-size-xxxs: 8px;
+$font-size-xxs: 10px;
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-ms: 16px;
+$font-size-md: 18px;
+$font-size-lg: 20px;
+$font-size-mlg: 22px;
+$font-size-elg: 24px;
+$font-size-xl: 32px;
+$font-size-xlg: 48px;
+$font-size-xxl: 80px;
+
+// Line-height
+$line-height-xs: 12px;
+$line-height-sm: 24px;
+$line-height-ms: 32px;
+$line-height-md: 40px;
+$line-height-lg: 48px;
+$line-height-xl: 56px;
+$line-height-xlg: 80px;
+$line-height-xxl: 88px;
+
+// Font-weight
+$font-weight-light: 300;
+$font-weight-default: 400;
+$font-weight-semi-bold: 500;
+$font-weight-bold: 700;
+
+// Colors
+$color-transparent: transparent;
+$color-emerald: #11998e;
+$color-dark-green: #009987;
+$color-light-green: #00bfa8;
+$color-lighter-green: #8ce7dc;
+$color-lighter-green2: #4edac9;
+$color-white: #fff;
+$color-black: #000;
+$color-black-opacity: rgba(0, 0, 0, 0.64);
+$color-black-opacity-full: rgba(0, 0, 0, 0.08);
+$color-black-opacity-double-full: rgba(0, 0, 0, 0.16);
+$dark-green-gradient: radial-gradient(100% 200% at 0% 0%, #009886 0%, #00BFA8 100%);
+$button-shadow: 0 4px 24px $color-black-opacity-full;
+$button-shadow-focus: inset 0 0 0 1px $color-black;
+$color-dark-gray: #bfbfbf;
+$color-gray: #7d7d7d;
+$color-super-dark-gray: #615b5b;
+$color-light-gray: #e7e7e7;
+$color-light-yellow: #ffe5c4;
+$color-yellow: #ffa12b;
+$color-dark-yellow: #fd9d23;
+$color-orange: #f78900;
+$color-light-brown: #f2ba74;
+$color-brown: #915100;
+$color-black: #000;
+$color-red: #b00202;
+$color-error: #ff0000;
+$color-pink: #ffc8c8;
+$light-pink: #ffdddd;
+$dark-pink: #f4afaf;
+$color-bg-fb-icon: #4267B2;
+$color-hover-bg-fb-icon: #3B5998;
+$color-bg-inst-icon: linear-gradient(135deg, #ec4ab5 0%, #ec7b4a 100%);
+$color-bg-tw-icon: #4aa1ec;
+$color-bg-vk-icon: #5380bd;
+$color-bg-pnt-icon: #ff0000;
+$color-bg-snp-icon: #FFFA37;
+$color-bg-reddit-icon: #FF5700;
+$color-bg-linkedin-icon: #4393CC;
+
+// Border
+$border-radius-sm: 8px;
+$border-radius-ms: 4px;
+$border-radius-md: 6px;
+$border-radius-lg: 12px;
+$border-radius-xl: 32px;
+$border-radius-circle: 50%;
+
+// Border Style
+$border-sm-light-gray: 1px solid $color-light-gray;
+$border-md-light-gray: 2px solid $color-light-gray;
+
+// Header
+$header-height: 56px;
+$header-requests-height: 61px;
+
+// Footer
+$footer-mobile-height: 411px;
+$footer-unauthorized-mobile-height: 501px;
+$footer-tablet-height: 301px;
+$footer-unauthorized-tablet-height: 381px;
+$footer-notebook-height: 160px;
+$footer-desktop-height: 104px;
+
+//Chat
+$chat-footer-mobile-height: 77px;
+
+// Shadows
+$shadows-default: 0px 4px 24px rgba(0, 0, 0, 0.08);
+$shadows-dark: 0px 4px 24px rgba(0, 0, 0, 0.15);
