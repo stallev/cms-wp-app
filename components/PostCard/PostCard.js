@@ -1,15 +1,27 @@
-import * as React from 'react';
-import ReactMarkdown from "react-markdown"
-import { Button, Typography } from '@mui/material';
-import MarkdownContent from '../markdownContent/MarkdownContent';
-import Image from 'next/image';
-import CustomImage from '../CustomImage/CustomImage';
+import React, { useMemo } from 'react';
 import { useRouter } from 'next/router';
+import { Button, Typography, Link } from '@mui/material';
+import { RoutePath } from '../../constants/RoutePath';
+import MarkdownContent from '../markdownContent/MarkdownContent';
+import CustomImage from '../CustomImage/CustomImage';
+import CustomLink from '../CustomLink/CustomLink';
 
 import styles from './styles/post-card.module.scss';
 
 const PostCard = ({cardData}) => {
   const router = useRouter();
+
+  const {categories: {nodes: categoriesArray} } = cardData;
+
+  const categoriesLinks = useMemo(() => {
+    return categoriesArray.map((item) => 
+    <CustomLink
+      to={`${RoutePath.Category}/${item.slug}`}
+      key={item.slug}
+    >
+      {item.name}
+    </CustomLink>)
+  }, [categoriesArray]);
 
   const redirectToPostPage = () => router.push(cardData.uri);
   return (
@@ -23,11 +35,12 @@ const PostCard = ({cardData}) => {
         <Typography variant='h6' className={styles['post-card__title']}>
           {cardData.title}
         </Typography>
-        <Typography variant='body1' className={styles['post-card__excerpt']}>
-          
-        </Typography>
         <MarkdownContent content={cardData.excerpt}/>
         <div className={styles['post-card__actions']}>
+          <div className={styles['post-card__category-links']}>
+            {categoriesLinks}
+          </div>
+
           <Button size="small">Share</Button>
           <Button size="small" onClick={redirectToPostPage}>Learn More</Button>
         </div>

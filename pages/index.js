@@ -1,38 +1,27 @@
 import Head from 'next/head';
-import Link from 'next/link';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import Layout from '../components/layout/layout';
 import Container from '../components/container/container';
-import PostCard from '../components/PostCard/PostCard';
 import PostCardsList from '../components/PostCardsList/PostCardsList';
 import { getAllPostsExcerpt, getPostData } from '../graphql/queries';
-import Grid from '@mui/material/Unstable_Grid2/Grid2';
-
-import styles from '../styles/pages/homepage.module.scss';
+import Search from '../components/Search/Search';
 
 const Homepage = ({ postsList }) => {
-  const postNumber = 'cG9zdDo0Nw==';
+  const [posts, setPosts] = useState(postsList);
 
   useEffect(() => {
     console.log(postsList);
-    // console.log('postData is ', postData);
   }, [postsList]);
-
-  const postCardsList = useMemo(() => {
-    return !!postsList.length && postsList.map((item) => 
-      <PostCard cardData={item} key={item.uri}/>
-    )
-  }, [postsList])
-  console.log(postsList)
+  console.log(postsList);
 
   return (
     <Layout>
       <Head>
-        <title>First Post</title>
+        <title>CleanKarma Blog</title>
       </Head>
       <Container isWide>
         <h1>Homepage</h1>
-        <PostCardsList postCardsList={postCardsList}/>
+        {!!posts.length && <PostCardsList postsList={posts}/>}
       </Container>
     </Layout>
   );

@@ -1,46 +1,40 @@
 import Head from 'next/head';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { fetchAPI } from "../../lib/api";
-import { getAllPostsSlugs, getPostData } from '../../graphql/queries';
+import { getAllCategoriesSlugs, getPostsByCategory } from '../../graphql/queries';
 import Layout from '../../components/layout/layout';
 import Container from '../../components/container/container';
-import MarkdownContent from '../../components/markdownContent/MarkdownContent';
-import PostBody from '../../components/PostBody/PostBody';
+import PostCardsList from '../../components/PostCardsList/PostCardsList';
 
-const Post = ({ post }) => {
-
-  useEffect(() => {
-    console.log(post);
-    console.log(post.title);
-  }, [post])
+const Category = ({ postsList, categoryName }) => {
   return (
     <Layout>
       <Head>
-        <title>{post.title}</title>
+        <title>Category page</title>
       </Head>
-      <PostBody postData={post}/>
+      <Container isWide>
+        <h1>Category: {categoryName}</h1>
+        {!!postsList.length && <PostCardsList postsList={postsList}/>}
+      </Container>
     </Layout>
   );
 }
 
-export default Post;
+export default Category;
 
 export async function getStaticPaths() {
   const res = await fetch(process.env.GRAPHQL_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      query: getAllPostsSlugs
+      query: getAllCategoriesSlugs
     })
   })
   console.log('res path ', res)
 
   const json = await res.json()
-  const posts = json.data.posts.nodes;
+  const categories = json.data.categories.nodes;
 
-  const paths = posts.map((post) => ({
-    params: { slug: post.slug },
+  const paths = categories.map((item) => ({
+    params: { slug: item.slug },
   }));
 
   return { paths, fallback: false };
@@ -51,20 +45,23 @@ export async function getStaticProps({ params }) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      query: getPostData,
+      query: getPostsByCategory,
       variables: {
         id: params.slug,
         idType: 'SLUG'
       }
     })
-  })
-  console.log('res post  ', res)
+  });
 
-  const json = await res.json()
-  const { post } = json.data;
+  const json = await res.json();
+  const postsList = json.data.category.posts.nodes;
+  const categoryName = json.data.category.name;
 
   return {
-    props: { post },
-    revalidate: 1,
+    props: {
+      postsList,
+      categoryName
+    },
+    revalidate: 10,
   }
 }
