@@ -5,6 +5,7 @@ import Container from '../../components/container/container';
 import PostCardsList from '../../components/PostCardsList/PostCardsList';
 
 const Category = ({ postsList, categoryName }) => {
+  console.log(postsList)
   return (
     <Layout>
       <Head>
