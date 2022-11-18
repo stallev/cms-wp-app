@@ -107,6 +107,7 @@ export const getPostsByCategory = /* GraphQL */ `query getPostsByCategory ($id: 
         excerpt
         slug
         title
+        uri
         categories {
           nodes {
             name
