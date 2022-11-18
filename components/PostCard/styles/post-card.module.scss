@@ -1,0 +1,33 @@
+@import '../../../styles/variables.scss';
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  border: 1px solid $color-dark-gray;
+  border-radius: $border-radius-sm;
+  box-shadow: $shadows-dark;
+
+  &__image-wrap {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      overflow: hidden;
+      border-top-left-radius: $border-radius-sm;
+      border-top-right-radius: $border-radius-sm;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    padding: $gutter-base $gutter-ml;
+  }
+
+  &__actions {
+    margin-top: auto;
+  }
+}
